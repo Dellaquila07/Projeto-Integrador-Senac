@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Projeto_Integrador_Senac.Models.Venda>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Cadastro de Vendas</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID-Cliente
+            </th>
+            <th>
+                ID-Produto
+            </th>
+            <th>
+                Quantidade
+            </th>
+            <th>
+                Preço da Venda
+            </th>
+            <th>
+                Data da Venda
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Venda_Quantidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Venda_Preco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Venda_Data)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Venda_ID" style="color: blue">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Venda_ID" style="color: gray">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Venda_ID" style="color: red">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

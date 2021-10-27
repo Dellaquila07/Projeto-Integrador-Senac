@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Projeto_Integrador_Senac.Models.Produto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Cadastro de Produtos</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Preço de Custo
+            </th>
+            <th>
+                Preço de Venda
+            </th>
+            <th>
+                Quantidade no Estoque
+            </th>
+            <th>
+                Ativo
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto_Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto_Preco_Custo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto_Preco_Venda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto_Quantidade_Estoque)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto_Ativo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Produto_ID" style="color: blue;">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Produto_ID" style="color: gray;">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Produto_ID" style="color: red;">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

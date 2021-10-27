@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Projeto_Integrador_Senac.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Cadastro de Clientes</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Sobrenome
+            </th>
+            <th>
+                Data de Nascimento
+            </th>
+            <th>
+                Celular
+            </th>
+            <th>
+                Email
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente_Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente_Sobrenome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente_Dt_Nasc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente_Celular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente_Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Cliente_ID" style="color: blue;">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Cliente_ID" style="color: gray;">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Cliente_ID" style="color: red;">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
